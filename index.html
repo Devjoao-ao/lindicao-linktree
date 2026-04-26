@@ -514,6 +514,22 @@
     .foot { text-align: center; padding-top: 10px; animation: lift .85s var(--ease) both; }
     .copy { font-size: 9px; font-weight: 300; letter-spacing: .24em; text-transform: uppercase; color: var(--tx3); }
 
+    /* ─── GRID BG (top-right corner) ─────────────── */
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background-image:
+        linear-gradient(to right,  rgba(255,255,255,.055) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.055) 1px, transparent 1px);
+      background-size: 32px 32px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 100% 0%, #000 50%, transparent 90%);
+      mask-image:         radial-gradient(ellipse 80% 80% at 100% 0%, #000 50%, transparent 90%);
+    }
+
+    .page { z-index: 3; }
+
     /* ─── ENTRANCE ANIMATIONS ─────────────────────── */
     @keyframes lift {
       from { opacity: 0; transform: translateY(20px); }
@@ -553,6 +569,7 @@
 </head>
 
 <body>
+<div class="grid-bg"></div>
 <div class="page">
 
   <!-- ── HERO ─────────────────────────────────────── -->
