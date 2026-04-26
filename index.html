@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lindicação Fernandes — Comunicação, Marketing, Oratória, Atuação, Locução e Mestre de Cerimónias. Angola.">
+  <meta property="og:title" content="Lindicação Fernandes">
+  <meta property="og:description" content="Comunicação & Marketing · Angola">
+  <title>Lindicação Fernandes</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='22' font-family='Georgia,serif' fill='%23e0dbd3'>LF</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── RESET ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── TOKENS ─────────────────────────────────── */
+    :root {
+      --bg:      #090908;
+      --surf:    #111110;
+      --surf2:   #181816;
+      --surf3:   #202020;
+      --tx:      #FFFFFF;
+      --tx2:     #C8C2BB;
+      --tx3:     #96908A;
+      --gold:    #C8A055;
+      --gold-hi: #D9B96A;
+      --radius:  14px;
+      --ease:    cubic-bezier(.16,1,.3,1);
+    }
+
+    /* ─── BASE ───────────────────────────────────── */
+    html {
+      background: var(--bg);
+      color: var(--tx);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 72px 22px 96px;
+      position: relative;
+    }
+
+    /* Cinematic ambient light */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 100% 55% at 50% -5%,  rgba(200,185,155,.05) 0%, transparent 60%),
+        radial-gradient(ellipse 55%  65% at 90%  90%,  rgba( 90, 95,120,.04) 0%, transparent 55%),
+        radial-gradient(ellipse 40%  40% at  5%  70%,  rgba(120, 90, 70,.03) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Film grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23g)' opacity='.4'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      opacity: .03;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ─── WRAPPER ─────────────────────────────────── */
+    .page {
+      width: 100%;
+      max-width: 460px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ─── HERO ───────────────────────────────────── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 68px;
+      animation: lift .9s .04s var(--ease) both;
+    }
+
+    /* Avatar with photo */
+    .ava {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      position: relative;
+      margin-bottom: 30px;
+      flex-shrink: 0;
+      overflow: hidden;
+      cursor: default;
+    }
+
+    /* Rim-light ring */
+    .ava::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      padding: 1.5px;
+      background: conic-gradient(
+        from 200deg,
+        rgba(200,160,85,.00)   0deg,
+        rgba(200,160,85,.55)  38deg,
+        rgba(200,160,85,.00)  86deg,
+        rgba(200,160,85,.00) 260deg,
+        rgba(200,160,85,.30) 310deg,
+        rgba(200,160,85,.00) 360deg
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Black fade overlay on hover */
+    .ava::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #000;
+      opacity: 0;
+      transition: opacity .55s var(--ease);
+      z-index: 1;
+    }
+    .ava:hover::after { opacity: 0; }
+
+    .ava img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.15rem, 9.5vw, 3.1rem);
+      font-weight: 400;
+      letter-spacing: .03em;
+      line-height: 1.04;
+      margin-bottom: 14px;
+    }
+
+    h1 .n1 { font-weight: 300; display: block; }
+    h1 .n2 { font-style: italic; display: block; }
+
+    .tagline {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--tx2);
+      margin-bottom: 9px;
+    }
+
+    .loc {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: .11em;
+      color: var(--tx3);
+    }
+    .loc svg { width: 10px; height: 10px; flex-shrink: 0; stroke: var(--tx3); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ─── SECTION ─────────────────────────────────── */
+    .sec { margin-bottom: 44px; }
+
+    .sec-hd {
+      font-size: 8.5px;
+      font-weight: 500;
+      letter-spacing: .34em;
+      text-transform: uppercase;
+      color: var(--tx3);
+      margin-bottom: 12px;
+      padding-left: 2px;
+    }
+
+    /* ─── CARD LIST ───────────────────────────────── */
+    .stack { display: flex; flex-direction: column; gap: 6px; }
+
+    /* ─── CARD BASE ───────────────────────────────── */
+    .card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 19px;
+      border-radius: var(--radius);
+      background: var(--surf);
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .3s var(--ease), background .3s ease, box-shadow .3s ease;
+      box-shadow:
+        0 2px 8px  rgba(0,0,0,.55),
+        0 8px 32px rgba(0,0,0,.40),
+        inset 0 1px 0 rgba(255,255,255,.04);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Rim-light border */
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(
+        140deg,
+        rgba(255,255,255,.14)  0%,
+        rgba(255,255,255,.02) 50%,
+        rgba(255,255,255,.07) 100%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      transition: background .3s ease;
+      pointer-events: none;
+    }
+
+    /* Inner warm glow (hover) */
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 65% at 5% 50%, rgba(200,160,85,.09) 0%, transparent 65%);
+      opacity: 0;
+      transition: opacity .4s ease;
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      background: var(--surf2);
+      box-shadow:
+        0 4px 16px rgba(0,0,0,.65),
+        0 12px 48px rgba(0,0,0,.50),
+        0 0 0 1px rgba(200,160,85,.10),
+        inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    .card:hover::before {
+      background: linear-gradient(140deg, rgba(255,255,255,.28) 0%, rgba(255,255,255,.03) 50%, rgba(255,255,255,.14) 100%);
+    }
+    .card:hover::after { opacity: 1; }
+
+    /* Icon container */
+    .ico {
+      width: 38px; height: 38px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: var(--surf2);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 2px 8px rgba(0,0,0,.4);
+      transition: background .3s ease, box-shadow .3s ease;
+    }
+    .card:hover .ico {
+      background: var(--surf3);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 2px 12px rgba(0,0,0,.5);
+    }
+
+    .ico svg {
+      width: 15px; height: 15px;
+      stroke: var(--gold);
+      stroke-width: 1.5; fill: none;
+      stroke-linecap: round; stroke-linejoin: round;
+      transition: stroke .3s ease;
+    }
+    .card:hover .ico svg { stroke: var(--gold-hi); }
+
+    /* Card text */
+    .ct { flex: 1; min-width: 0; }
+
+    .ct-cat {
+      font-size: 8.5px;
+      font-weight: 400;
+      letter-spacing: .12em;
+      color: var(--tx2);
+      margin-bottom: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ct-name {
+      font-size: 13.5px;
+      font-weight: 400;
+      letter-spacing: .01em;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .ct-sub {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: .04em;
+      color: var(--tx2);
+      margin-top: 3px;
+      transition: color .3s ease;
+    }
+    .card:hover .ct-sub { color: var(--tx); }
+
+    /* Static card */
+    .card.static { cursor: default; }
+    .card.static:hover {
+      transform: none;
+      background: var(--surf);
+      box-shadow: 0 2px 8px rgba(0,0,0,.55), 0 8px 32px rgba(0,0,0,.40), inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    .card.static:hover::before { background: linear-gradient(140deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,.02) 50%, rgba(255,255,255,.07) 100%); }
+    .card.static:hover::after  { opacity: 0; }
+    .card.static:hover .ico    { background: var(--surf2); }
+    .card.static:hover .ico svg { stroke: var(--gold); }
+    .card.static:hover .ct-sub  { color: var(--tx2); }
+
+    /* Arrow */
+    .arr { flex-shrink: 0; }
+    .arr svg {
+      width: 13px; height: 13px;
+      stroke: var(--tx3); stroke-width: 1.5; fill: none;
+      stroke-linecap: round; stroke-linejoin: round;
+      transition: stroke .3s ease, transform .3s var(--ease);
+    }
+    .card:hover .arr svg { stroke: var(--gold); transform: translate(2px, -2px); }
+
+    /* ─── BRAND LIST ──────────────────────────────── */
+    .brand-list { display: flex; flex-direction: column; gap: 6px; }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: var(--surf);
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s var(--ease), background .3s ease, box-shadow .3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,.55), 0 6px 24px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.04);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .brand-row::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(140deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,.02) 50%, rgba(255,255,255,.07) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      transition: background .3s ease;
+      pointer-events: none;
+    }
+
+    .brand-row::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 65% at 5% 50%, rgba(200,160,85,.07) 0%, transparent 65%);
+      opacity: 0;
+      transition: opacity .4s ease;
+      pointer-events: none;
+    }
+
+    .brand-row:hover {
+      transform: translateY(-1px);
+      background: var(--surf2);
+      box-shadow: 0 4px 16px rgba(0,0,0,.65), 0 10px 40px rgba(0,0,0,.48), 0 0 0 1px rgba(200,160,85,.10), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .brand-row:hover::before { background: linear-gradient(140deg, rgba(255,255,255,.26) 0%, rgba(255,255,255,.03) 50%, rgba(255,255,255,.12) 100%); }
+    .brand-row:hover::after  { opacity: 1; }
+
+    .b-ico {
+      width: 32px; height: 32px;
+      border-radius: 9px;
+      background: var(--surf2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 2px 8px rgba(0,0,0,.4);
+      transition: background .3s ease;
+    }
+    .brand-row:hover .b-ico { background: var(--surf3); }
+
+    .b-ico svg {
+      width: 13px; height: 13px;
+      stroke: var(--gold); stroke-width: 1.5; fill: none;
+      stroke-linecap: round; stroke-linejoin: round;
+      transition: stroke .3s ease;
+    }
+    .brand-row:hover .b-ico svg { stroke: var(--gold-hi); }
+
+    .b-name {
+      flex: 1;
+      font-size: 13px;
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: .01em;
+    }
+
+    .b-handle {
+      font-size: 10px;
+      font-weight: 300;
+      color: var(--tx2);
+      letter-spacing: .05em;
+      transition: color .3s ease;
+    }
+    .brand-row:hover .b-handle { color: var(--gold); }
+
+    .b-arr svg {
+      width: 11px; height: 11px;
+      stroke: var(--tx3); stroke-width: 1.5; fill: none;
+      stroke-linecap: round; stroke-linejoin: round;
+      margin-left: 6px;
+      transition: stroke .3s ease, transform .3s var(--ease);
+    }
+    .brand-row:hover .b-arr svg { stroke: var(--gold); transform: translate(2px, -2px); }
+
+    /* ─── SOC CIRCLES ─────────────────────────────── */
+    .soc-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .soc-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .3s var(--ease);
+    }
+    .soc-btn:hover { transform: translateY(-4px); }
+
+    .soc-ico {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: var(--surf);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      box-shadow: 0 4px 16px rgba(0,0,0,.6), 0 1px 4px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06);
+      transition: background .3s ease, box-shadow .3s ease;
+    }
+
+    /* Circle rim-light */
+    .soc-ico::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      padding: 1px;
+      background: linear-gradient(140deg, rgba(255,255,255,.18) 0%, rgba(255,255,255,.02) 50%, rgba(255,255,255,.09) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      transition: background .3s ease;
+      pointer-events: none;
+    }
+
+    .soc-btn:hover .soc-ico {
+      background: var(--surf2);
+      box-shadow: 0 6px 24px rgba(0,0,0,.7), 0 0 0 1px rgba(200,160,85,.22), inset 0 1px 0 rgba(255,255,255,.08);
+    }
+
+    .soc-btn:hover .soc-ico::before {
+      background: linear-gradient(140deg, rgba(200,160,85,.5) 0%, rgba(200,160,85,.05) 50%, rgba(200,160,85,.25) 100%);
+    }
+
+    .soc-ico svg {
+      width: 18px; height: 18px;
+      stroke: var(--gold); stroke-width: 1.5; fill: none;
+      stroke-linecap: round; stroke-linejoin: round;
+      transition: stroke .3s ease;
+    }
+    .soc-btn:hover .soc-ico svg { stroke: var(--gold-hi); }
+
+    .soc-lbl {
+      font-size: 8px;
+      font-weight: 300;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--tx3);
+      transition: color .3s ease;
+    }
+    .soc-btn:hover .soc-lbl { color: var(--tx2); }
+
+    /* ─── FOOTER ──────────────────────────────────── */
+    .foot { text-align: center; padding-top: 10px; animation: lift .85s var(--ease) both; }
+    .copy { font-size: 9px; font-weight: 300; letter-spacing: .24em; text-transform: uppercase; color: var(--tx3); }
+
+    /* ─── ENTRANCE ANIMATIONS ─────────────────────── */
+    @keyframes lift {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .sec { animation: lift .85s var(--ease) both; }
+
+    /* ─── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 480px) {
+      body        { padding: 48px 14px 72px; }
+      .hero       { padding-bottom: 48px; }
+      .ava        { width: 76px; height: 76px; }
+      h1          { font-size: clamp(1.9rem, 10vw, 2.6rem); }
+      .tagline    { font-size: 9px; letter-spacing: .2em; }
+      .sec-hd     { font-size: 8px; }
+      .card       { padding: 13px 14px; gap: 12px; }
+      .ico        { width: 34px; height: 34px; border-radius: 9px; }
+      .ico svg    { width: 14px; height: 14px; }
+      .ct-name    { font-size: 12.5px; }
+      .ct-sub     { font-size: 9.5px; }
+      .brand-row  { padding: 10px 12px; gap: 10px; }
+      .b-ico      { width: 28px; height: 28px; }
+      .b-name     { font-size: 12px; }
+      .b-handle   { font-size: 9.5px; }
+      .soc-row    { gap: 12px; }
+      .soc-ico    { width: 46px; height: 46px; }
+      .soc-ico svg { width: 16px; height: 16px; }
+      .soc-lbl    { font-size: 7.5px; }
+    }
+
+    @media (max-width: 360px) {
+      .soc-row  { gap: 8px; }
+      .soc-ico  { width: 42px; height: 42px; }
+      .b-handle { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+  <!-- ── HERO ─────────────────────────────────────── -->
+  <header class="hero">
+    <div class="ava">
+      <img src="Lindi.jpeg" alt="Lindicação Fernandes">
+    </div>
+    <h1>
+      <span class="n1">Lindicação</span>
+      <span class="n2">Fernandes</span>
+    </h1>
+    <p class="tagline">Comunicação &amp; Marketing</p>
+    <span class="loc">
+      <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      Luanda, Angola
+    </span>
+  </header>
+
+  <!-- ── ESPECIALIDADES ────────────────────────────── -->
+  <section class="sec" style="animation-delay:.10s">
+    <p class="sec-hd">Especialidades</p>
+    <div class="stack">
+
+      <div class="card static">
+        <div class="ico">
+          <svg viewBox="0 0 24 24"><path d="M3 9h2l7-4v14l-7-4H3a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1z"/><path d="M13 5v14"/></svg>
+        </div>
+        <div class="ct">
+          <p class="ct-cat">Estratégia</p>
+          <p class="ct-name">Comunicação &amp; Marketing</p>
+          <p class="ct-sub">Brand Building · Conteúdo · Estratégia</p>
+        </div>
+      </div>
+
+      <div class="card static">
+        <div class="ico">
+          <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+        </div>
+        <div class="ct">
+          <p class="ct-cat">Palavra &amp; Persuasão</p>
+          <p class="ct-name">Oratória</p>
+          <p class="ct-sub">Formação · Coaching · Palestrante</p>
+        </div>
+      </div>
+
+      <div class="card static">
+        <div class="ico">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="ct">
+          <p class="ct-cat">Artes Cénicas</p>
+          <p class="ct-name">Atuação</p>
+          <p class="ct-sub">Teatro · Cinema · Publicidade</p>
+        </div>
+      </div>
+
+      <div class="card static">
+        <div class="ico">
+          <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        </div>
+        <div class="ct">
+          <p class="ct-cat">Voz &amp; Narrativa</p>
+          <p class="ct-name">Locução</p>
+          <p class="ct-sub">Comerciais · Documentários · Eventos</p>
+        </div>
+      </div>
+
+      <div class="card static">
+        <div class="ico">
+          <svg viewBox="0 0 24 24"><path d="M2 18h20"/><path d="m4 8 2.5 4.5L12 4l5.5 8.5L20 8v10H4V8z"/></svg>
+        </div>
+        <div class="ct">
+          <p class="ct-cat">Eventos</p>
+          <p class="ct-name">Mestre de Cerimónias</p>
+          <p class="ct-sub">Corporativo · Casamentos · Galas</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── UNIVERSO DE MARCAS ─────────────────────────── -->
+  <section class="sec" style="animation-delay:.19s">
+    <p class="sec-hd">Universo de Marcas</p>
+    <div class="brand-list">
+
+      <a class="brand-row" href="https://instagram.com/li_vibe" target="_blank" rel="noopener noreferrer">
+        <div class="b-ico"><svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></div>
+        <span class="b-name">Li Vibe</span>
+        <span class="b-handle">@li_vibe</span>
+        <div class="b-arr"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></div>
+      </a>
+
+      <a class="brand-row" href="https://instagram.com/moova_ao" target="_blank" rel="noopener noreferrer">
+        <div class="b-ico"><svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></div>
+        <span class="b-name">Moova</span>
+        <span class="b-handle">@moova_ao</span>
+        <div class="b-arr"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></div>
+      </a>
+
+      <a class="brand-row" href="https://instagram.com/ubrand.ao" target="_blank" rel="noopener noreferrer">
+        <div class="b-ico"><svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></div>
+        <span class="b-name">UBrand</span>
+        <span class="b-handle">@ubrand.ao</span>
+        <div class="b-arr"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></div>
+      </a>
+
+      <a class="brand-row" href="https://instagram.com/uendoo.studio" target="_blank" rel="noopener noreferrer">
+        <div class="b-ico"><svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></div>
+        <span class="b-name">Uendoo Studio</span>
+        <span class="b-handle">@uendoo.studio</span>
+        <div class="b-arr"><svg viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── PRESENÇA DIGITAL ───────────────────────────── -->
+  <section class="sec" style="animation-delay:.28s">
+    <div class="soc-row">
+
+      <a class="soc-btn" href="https://instagram.com/lindicacaofernandes" target="_blank" rel="noopener noreferrer">
+        <div class="soc-ico"><svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></div>
+        <span class="soc-lbl">Instagram</span>
+      </a>
+
+      <a class="soc-btn" href="#" target="_blank" rel="noopener noreferrer">
+        <div class="soc-ico"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></div>
+        <span class="soc-lbl">LinkedIn</span>
+      </a>
+
+      <a class="soc-btn" href="#">
+        <div class="soc-ico"><svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+        <span class="soc-lbl">Email</span>
+      </a>
+
+      <a class="soc-btn" href="https://wa.me/244936844126?text=Olá%20Lindicação%21%20Estou%20interessado%20nos%20seus%20serviços%20e%20gostaria%20de%20conversar%20sobre%20uma%20possível%20colaboração.%20Quando%20estiver%20disponível%3F" target="_blank" rel="noopener noreferrer">
+        <div class="soc-ico" style="overflow:visible"><svg viewBox="0 0 24 24" style="stroke:none;fill:var(--gold);width:20px;height:20px;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div>
+        <span class="soc-lbl">WhatsApp</span>
+      </a>
+
+    </div>
+  </section>
+
+  <footer class="foot" style="animation-delay:.34s">
+    <p class="copy">© 2025 · Lindicação Fernandes</p>
+  </footer>
+
+</div>
+</body>
+</html>
